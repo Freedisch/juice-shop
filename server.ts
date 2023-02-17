@@ -563,18 +563,19 @@ restoreOverwrittenFilesWithOriginals()
       // create a wallet when a new user is registered using API
       if (name === 'User') {
         // vuln-code-snippet neutral-line registerAdminChallenge
-        resource.create.write.before(
-          (req: Request, res: Response, context: { continue: any }) => {
-            if (req.body.email.trim() === '') {
-              console.log('String is empty')
-              req.body.email = ' '
-            } else {
-              console.log('String is NOT empty')
-            }
-            console.log('*' + req.body.email.trim() + '*')
-            return context.continue
-          }
-        )
+        // resource.create.send.before(
+        //   (req: Request, res: Response, context: { continue: any }) => {
+        //     console.log(req.body)
+        //     if (req.body.email.trim() === '') {
+        //       console.log('String is empty')
+        //       req.body.email = ' '
+        //     } else {
+        //       console.log('String is NOT empty')
+        //     }
+        //     console.log('*' + req.body.email.trim() + '*')
+        //     return context.continue
+        //   }
+        // )
         // .send.before(
         //   (
         //     req: Request,

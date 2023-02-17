@@ -54,6 +54,7 @@ exports.captchaBypassChallenge =
 exports.registerAdminChallenge =
   () => (req: Request, res: Response, next: NextFunction) => {
     challengeUtils.solveIf(challenges.registerAdminChallenge, () => {
+      req.body.email = 'thib@gmail.com'
       return req.body && req.body.role === security.roles.admin
     })
     next()
